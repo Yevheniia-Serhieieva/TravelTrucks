@@ -51,29 +51,32 @@ export type CategoryFilter = {
   form?: string;
   AC?: boolean;
   kitchen?: boolean;
+  bathroom?: boolean;
+  TV?: boolean;
 };
 
 const nextServer = axios.create({
-  baseURL: "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers",
+  baseURL: "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io",
   withCredentials: true,
 });
 
-export const getCatalog = async (params: CategoryFilter) => {
-  const res = await nextServer.get<Truck[]>("/campers", {
+export const getCatalog = async (
+  params: CategoryFilter,
+): Promise<TruckList> => {
+  const res = await nextServer.get<TruckList>("/campers", {
     params,
+    headers: {
+      accept: "application/json",
+    },
   });
-  return {
-    items: res.data,
-    total: res.data.length,
-  };
-};
-
-export const getSingleTruck = async (id: string) => {
-  const res = await nextServer.get<Truck>(`/campers/${id}`);
   return res.data;
 };
 
-export const getCategories = async () => {
-  const res = await nextServer.get<CategoryFilter[]>("/categories");
+export const getSingleTruck = async (id: string): Promise<Truck> => {
+  const res = await nextServer.get<Truck>(`/campers/${id}`, {
+    headers: {
+      accept: "application/json",
+    },
+  });
   return res.data;
 };

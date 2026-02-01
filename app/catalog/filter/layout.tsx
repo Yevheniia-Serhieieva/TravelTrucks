@@ -1,4 +1,5 @@
 import React from "react";
+import css from "./LayoutNotes.module.css";
 
 type Props = {
   children: React.ReactNode;
@@ -7,10 +8,10 @@ type Props = {
 
 const TrucksLayout = ({ children, sidebar }: Props) => {
   return (
-    <section>
-      <aside>{sidebar}</aside>
+    <div className={css.container}>
+      <aside className={css.sidebar}>{sidebar}</aside>
       <div>{children}</div>
-    </section>
+    </div>
   );
 };
 

@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.sidebar {
+  width: 488px;
+  padding: 48px 64px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #ddd;
+}

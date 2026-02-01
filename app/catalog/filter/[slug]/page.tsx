@@ -1,5 +1,10 @@
-import TruckList from "@/components/TruckList/TruckList";
 import { getCatalog } from "@/lib/api";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
+import Trucks from "./Trucks.client";
 
 type Props = {
   params: Promise<{ slug: string[] }>;
@@ -8,12 +13,19 @@ type Props = {
 const TrucksByCategory = async ({ params }: Props) => {
   const { slug } = await params;
   const form = slug[0] === "all" ? undefined : slug[0];
-  const response = await getCatalog({ form, limit: 4 });
+  const queryClient = new QueryClient();
+
+  const filters = form ? { form } : undefined;
+
+  await queryClient.prefetchQuery({
+    queryKey: ["trucks", { page: 1, ...filters }],
+    queryFn: () => getCatalog({ page: 1, limit: 4, ...filters }),
+  });
 
   return (
-    <div>
-      {response?.items?.length > 0 && <TruckList trucks={response.items} />}
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Trucks filters={filters} />
+    </HydrationBoundary>
   );
 };
 

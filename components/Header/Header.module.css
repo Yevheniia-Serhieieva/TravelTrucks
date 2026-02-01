@@ -2,15 +2,26 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 24px;
-  padding: 12px;
-  border-block-end: 1px solid #ccc;
+  border-bottom: 1px solid var(--badges);
+  padding: 24px 64px;
+  background: var(--inputs);
 }
 
 .navigation {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
+  justify-content: center;
+  gap: 32px;
   list-style-type: none;
+  margin: 0;
+  margin-left: 450px;
+}
+
+.item {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--main);
 }

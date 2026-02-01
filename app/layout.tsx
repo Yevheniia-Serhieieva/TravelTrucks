@@ -14,6 +14,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Travel Trucks",
   description: "Campers of your dreams in all taste",
+  openGraph: {
+    title: "Travel Trucks",
+    description: "Campers of your dreams in all taste",
+    url: `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io`,
+  },
 };
 
 export default function RootLayout({

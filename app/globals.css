@@ -1,3 +1,5 @@
+@import "modern-normalize/modern-normalize.css";
+
 :root {
   --main: #101828;
   --text: #475467;
@@ -12,7 +14,66 @@
   --font-family: "Inter", sans-serif;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ol:last-child,
+ul:last-child {
+  margin-bottom: 0;
+}
+
 a {
-  color: inherit;
   text-decoration: none;
+  color: currentColor;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  display: block;
+  cursor: pointer;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
 }

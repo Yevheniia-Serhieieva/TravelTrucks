@@ -14,15 +14,27 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const truck = await getSingleTruck(id);
+
+  if (!truck) {
+    return {
+      title: "Truck not found",
+      description: "The truck you are looking for does not exist.",
+    };
+  }
+
   return {
     title: `Truck: ${truck.name}`,
     description: truck.description.slice(0, 30),
+    openGraph: {
+      title: `Truck: ${truck.name}`,
+      description: truck.description.slice(0, 30),
+      url: `https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers/${id}`,
+    },
   };
 }
 
 const TruckDetails = async ({ params }: Props) => {
   const { id } = await params;
-  const truck = await getSingleTruck(id);
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
@@ -32,7 +44,7 @@ const TruckDetails = async ({ params }: Props) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <TruckDetailsClient truck={truck} />;
+      <TruckDetailsClient />
     </HydrationBoundary>
   );
 };

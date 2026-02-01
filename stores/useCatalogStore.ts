@@ -1,20 +1,13 @@
-import { getCatalog, Truck } from "@/lib/api";
+import { CategoryFilter, getCatalog, Truck } from "@/lib/api";
 import { create } from "zustand";
-
-type Filters = {
-  location?: string;
-  form?: string;
-  AC?: boolean;
-  kitchen?: boolean;
-};
 
 type CatalogState = {
   items: Truck[];
   page: number;
-  filters: Filters;
+  filters: CategoryFilter;
   isLoading: boolean;
 
-  setFilter: (filters: Filters) => void;
+  setFilter: (filters: CategoryFilter) => void;
   fetchInitial: () => Promise<void>;
   loadMore: () => Promise<void>;
   reset: () => void;
@@ -31,10 +24,15 @@ export const useCatalogStore = create<CatalogState>((set, get) => ({
   },
 
   fetchInitial: async () => {
+    const { filters } = get();
     set({ isLoading: true });
-    const { page, filters } = get();
-    const res = await getCatalog({ page, limit: 4, ...filters });
-    set({ items: res.items, isLoading: false });
+    const res = await getCatalog({ page: 1, limit: 4, ...filters });
+
+    set({
+      items: res.items,
+      page: 1,
+      isLoading: false,
+    });
   },
 
   loadMore: async () => {

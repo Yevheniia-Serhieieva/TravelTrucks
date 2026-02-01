@@ -1,0 +1,124 @@
+.location {
+  margin-bottom: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.location_label {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--gray);
+}
+
+.location_input {
+  border-radius: 12px;
+  padding: 18px 180px 18px 48px;
+  width: 360px;
+  height: 56px;
+  background: var(--inputs);
+  outline: none;
+  margin-top: 8px;
+  border: none;
+}
+
+.location_input::placeholder {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main);
+  border: none;
+  outline: none;
+}
+
+.location_svg {
+  position: absolute;
+  left: 20px;
+  top: 55%;
+}
+
+.filters {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--text);
+  margin-bottom: 32px;
+}
+
+.equipment {
+  margin-bottom: 32px;
+}
+
+.filter_title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 120%;
+  color: var(--main);
+  margin-bottom: 24px;
+}
+
+.stroke {
+  stroke-width: 1px;
+  stroke: var(--gray-light);
+  margin-bottom: 24px;
+}
+
+.type {
+  margin-bottom: 40px;
+}
+
+.type_list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.type_item {
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 96px;
+  height: 96px;
+  mix-blend-mode: multiply;
+}
+
+.item_text {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: var(--main);
+}
+
+.button {
+  border-radius: 200px;
+  padding: 16px 60px;
+  width: 166px;
+  height: 56px;
+  background: var(--button);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  border: none;
+}
+
+.button:hover,
+.button:focus {
+  background: var(--button-hover);
+}

@@ -5,8 +5,8 @@ const Header = () => {
   return (
     <header className={css.header}>
       <Link href="/" aria-label="Home">
-        <svg>
-          <use />
+        <svg width="136" height="16">
+          <use href="/icons.svg#icon-logo"></use>
         </svg>
       </Link>
 

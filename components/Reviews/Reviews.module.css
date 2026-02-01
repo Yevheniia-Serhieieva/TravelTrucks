@@ -1,0 +1,49 @@
+.list {
+  width: 631px;
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.span {
+  border-radius: 60px;
+  width: 60px;
+  height: 60px;
+  background: var(--badges);
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33;
+  color: var(--button);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name_wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--main);
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+}

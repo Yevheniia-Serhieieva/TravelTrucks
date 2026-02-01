@@ -1,22 +1,32 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { api } from "../../api";
-import { AxiosError } from "axios";
+import { isAxiosError } from "axios";
+import { cookies } from "next/headers";
 
 type Props = {
   params: Promise<{ id: string }>;
 };
 
-export async function GET(request: NextRequest, { params }: Props) {
-  const { id } = await params;
+export async function GET(request: Request, { params }: Props) {
   try {
-    const { data } = await api(`/catalog/${id}`);
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json(
-      {
-        error: (error as AxiosError).message,
+    const cookieStore = await cookies();
+    const { id } = await params;
+    const res = await api(`/catalog/${id}`, {
+      headers: {
+        Cookie: cookieStore.toString(),
       },
-      { status: (error as AxiosError).status },
+    });
+    return NextResponse.json(res.data, { status: res.status });
+  } catch (error) {
+    if (isAxiosError(error)) {
+      return NextResponse.json(
+        { error: error.message, response: error.response?.data },
+        { status: error.status },
+      );
+    }
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
     );
   }
 }

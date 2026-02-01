@@ -23,3 +23,8 @@
   text-align: center;
   color: var(--main);
 }
+
+.svg {
+  fill: none;
+  stroke: #101828;
+}

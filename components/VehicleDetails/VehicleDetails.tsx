@@ -1,4 +1,5 @@
 import { Truck } from "@/lib/api";
+import css from "./VehicleDetails.module.css";
 
 type Props = {
   item: Truck;
@@ -6,27 +7,39 @@ type Props = {
 
 const VehicleDetails = ({ item }: Props) => {
   return (
-    <div>
-      <h3>Vehicle details</h3>
+    <div className={css.vehicle}>
+      <h3 className={css.title}>Vehicle details</h3>
 
-      <ul>
-        <li>
-          <p>Form {item.form}</p>
+      <div className={css.stroke}>
+        <svg width="360" height="1">
+          <use href="/icons.svg#icon-divider"></use>
+        </svg>
+      </div>
+
+      <ul className={css.list}>
+        <li className={css.item}>
+          <p className={css.text}>Form</p>
+          <p className={css.text}>{item.form}</p>
         </li>
-        <li>
-          <p>Length {item.length}</p>
+        <li className={css.item}>
+          <p className={css.text}>Length</p>
+          <p className={css.text}>{item.length}</p>
         </li>
-        <li>
-          <p>Width {item.width}</p>
+        <li className={css.item}>
+          <p className={css.text}>Width</p>
+          <p className={css.text}>{item.width}</p>
         </li>
-        <li>
-          <p>Height {item.height}</p>
+        <li className={css.item}>
+          <p className={css.text}>Height</p>
+          <p className={css.text}>{item.height}</p>
         </li>
-        <li>
-          <p>Tank {item.tank}</p>
+        <li className={css.item}>
+          <p className={css.text}>Tank</p>
+          <p className={css.text}>{item.tank}</p>
         </li>
-        <li>
-          <p>Consumption {item.consumption}</p>
+        <li className={css.item}>
+          <p className={css.text}>Consumption</p>
+          <p className={css.text}>{item.consumption}</p>
         </li>
       </ul>
     </div>

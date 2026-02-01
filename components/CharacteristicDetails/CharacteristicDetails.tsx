@@ -1,11 +1,11 @@
 import { Truck } from "@/lib/api";
-import css from "./Characteristic.module.css";
+import css from "./CharacteristicDetails.module.css";
 
 type Props = {
   item: Truck;
 };
 
-const Characteristic = ({ item }: Props) => {
+const CharacteristicDetails = ({ item }: Props) => {
   return (
     <ul className={css.list}>
       <li className={css.item}>
@@ -52,8 +52,48 @@ const Characteristic = ({ item }: Props) => {
           <p>TV</p>
         </li>
       )}
+      {item.radio === true && (
+        <li className={css.item}>
+          <svg width="20" height="20">
+            <use href="/icons.svg#icon-radio"></use>
+          </svg>
+          <p>radio</p>
+        </li>
+      )}
+      {item.refrigerator === true && (
+        <li className={css.item}>
+          <svg width="20" height="20">
+            <use href="/icons.svg#icon-fridge"></use>
+          </svg>
+          <p>refrigerator</p>
+        </li>
+      )}
+      {item.microwave === true && (
+        <li className={css.item}>
+          <svg className={css.svg} width="20" height="20">
+            <use href="/icons.svg#icon-microwave"></use>
+          </svg>
+          <p>microwave</p>
+        </li>
+      )}
+      {item.gas === true && (
+        <li className={css.item}>
+          <svg className={css.svg} width="20" height="20">
+            <use href="/icons.svg#icon-gas"></use>
+          </svg>
+          <p>gas</p>
+        </li>
+      )}
+      {item.water === true && (
+        <li className={css.item}>
+          <svg className={css.svg} width="20" height="20">
+            <use href="/icons.svg#icon-water"></use>
+          </svg>
+          <p>water</p>
+        </li>
+      )}
     </ul>
   );
 };
 
-export default Characteristic;
+export default CharacteristicDetails;
